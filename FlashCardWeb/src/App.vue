@@ -9,7 +9,6 @@ import { RouterLink, RouterView } from 'vue-router'
         <RouterLink to="/library">Library</RouterLink>
       </nav>
   </header>
-
   <RouterView />
 </template>
 
@@ -17,7 +16,7 @@ import { RouterLink, RouterView } from 'vue-router'
 header{
   width: 100%;
   height: 120px;
-  background-color: var(--blue1);
+  background-color: var(--green);
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -35,6 +34,7 @@ nav a{
   text-decoration: none;
   color:var(--white);
   font-size: 22px;
+  font-weight: bolder;
 }
 nav a.router-link-exact-active{
   color: var(--black);
