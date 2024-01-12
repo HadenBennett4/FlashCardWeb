@@ -15,8 +15,8 @@ import { RouterLink, RouterView } from 'vue-router'
 <style scoped>
 header{
   width: 100%;
-  height: 120px;
-  background-color: var(--green);
+  height: 80px;
+  background-color: var(--blue1);
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -45,7 +45,7 @@ nav a.router-link-exact-active:hover{
   text-decoration: underline;
 }
 nav a:hover{
-  color: var(--light-gray);
+  color: var(--green);
 }
 </style>
 <style>

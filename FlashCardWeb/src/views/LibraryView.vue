@@ -1,78 +1,12 @@
 <script setup>
-import { ref } from 'vue';
-const decks = ref([
-    {
-        name: "Deck1",
-        cards: [
-            {
-                description: "Test Name",
-                answer: "Test Answer",
-            },
-            {
-                description: "Test Name2",
-                answer: "Test Answer2",
-            }
-        ]
-    },
-    {
-        name: "Deck2",
-        cards: [
-            {
-                description: "Test Name",
-                answer: "Test Answer",
-            },
-            {
-                description: "Test Name2",
-                answer: "Test Answer2",
-            }
-        ]
-    },
-    {
-        name: "Deck3",
-        cards: [
-            {
-                description: "Test Name",
-                answer: "Test Answer",
-            },
-            {
-                description: "Test Name2",
-                answer: "Test Answer2",
-            }
-        ]
-    },
-    {
-        name: "Deck3",
-        cards: [
-            {
-                description: "Test Name",
-                answer: "Test Answer",
-            },
-            {
-                description: "Test Name2",
-                answer: "Test Answer2",
-            }
-        ]
-    },
-    {
-        name: "Deck3",
-        cards: [
-            {
-                description: "Test Name",
-                answer: "Test Answer",
-            },
-            {
-                description: "Test Name2",
-                answer: "Test Answer2",
-            }
-        ]
-    },
-])
+import { useDeckStore } from '../stores/deckStore.js'
+const deckStore = useDeckStore()
 </script>
 
 <template>
     <library>
         <library-container>
-            <RouterLink to="/flashcard" class="deck" v-for="deck in decks">
+            <RouterLink to="/flashcard" class="deck" v-for="deck in deckStore.decks">
                 {{ deck.name }}
             </RouterLink>
             <add-deck-button>ADD A DECK <br> + </add-deck-button>
@@ -88,8 +22,7 @@ const decks = ref([
         align-items: center;
         justify-content: center;
         width: 100%;
-        height: 700px;
-        margin-top: 120px;  
+        height: 700px; 
     }
 
     library-container {
@@ -107,12 +40,12 @@ const decks = ref([
         height: 100%;
     }
     .deck {
-        background-color: var(--blue1);
+        background-color: var(--green);
         color:var(--white)
     }
     add-deck-button{
-        border:2px solid var(--blue1);
-        color:var(--blue1);
+        border:2px solid var(--green);
+        color:var(--green);
     }
     .deck, add-deck-button{
         width: 23%;
