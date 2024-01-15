@@ -1,18 +1,25 @@
 <script setup>
 import { useDeckStore } from '../stores/deckStore.js'
+import { ref } from 'vue'
+const showDescription = ref(true)
 const deckStore = useDeckStore()
 function increase(){
   this.deckStore.incrementCard();
 }
 function decrease(){
   this.deckStore.decrementCard();
+  console.log(this.deckStore.currentCardId)
+}
+function changeShowDescription(){
+  showDescription.value = false;
 }
 </script>
 
 <template>
     <flash-card-main>
       <div class="flash-card">
-        {{ deckStore.getCardById }}
+        <div class="description" >{{ deckStore.getCardById.Description }}</div>
+        <div class="answer" >{{ deckStore.getCardById.Answer }}</div>
       </div>
       <button-container>
         <next-back-button @click="decrease()">&lt; Back</next-back-button>
@@ -38,12 +45,28 @@ function decrease(){
       height: 50%;
       border-radius: 20px;
       background-color: var(--green);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
       padding: 5%;
       font-size:50px;
+      transition: 1s ease;
+    }
+  
+    .flash-card:hover{
+      transform: scale(1.01);
+      rotate: y 180deg;
+    }
+    .flash-card .answer{
+      transform: scale(0);  
+      position: absolute;
+    }
+    .flash-card:hover .description{
+      transform: scale(0);
+      transition: .0s;
+      position: absolute;
+    }
+    .flash-card:hover .answer{
+      transform: scale(1);
+      display:block;
+      rotate: y 180deg;
     }
     next-back-button{
       width: 45%;

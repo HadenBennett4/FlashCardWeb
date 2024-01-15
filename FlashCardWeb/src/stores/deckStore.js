@@ -10,12 +10,12 @@ export const useDeckStore = defineStore('deckStore',{
                     {
                         id:1,
                         Description:"Test Description",
-                        Answer:"Test Answer",
+                        Answer:"Test Answer1",
                     },
                     {
                         id:2,
                         Description:"Test Description",
-                        Answer:"Test Answer",
+                        Answer:"Test Answer2",
                     },
                 ]
             },
@@ -25,29 +25,29 @@ export const useDeckStore = defineStore('deckStore',{
                 cards:[
                     {
                         id:1,
-                        Description:"Test Description",
+                        Description:"Test Descriptiona",
                         Answer:"Test Answer",
                     },
                     {
                         id:2,
-                        Description:"Test Description",
+                        Description:"Test Descriptiona2",
                         Answer:"Test Answer",
                     },
                 ]
             }
         ],
         currentDeckId:1,
-        currentCardId:1,
+        currentCardId:0,
     }),
     getters:{
         getDeckById(){
-            return this.decks.find(item => item.id === this.currentDeckId)
+            return this.decks[this.currentDeckId]
+        },
+        getCardById(){
+            return this.decks[this.currentDeckId].cards[this.currentCardId]
         },
     },
-    getCardById(){
-        currentDeck = this.getDeckById
-        return currentDeck.cards.find(obj =>  obj.id === this.currentCardId)
-    },
+
     actions:{
         incrementDeck() {
             if(this.currentDeckId != this.decks.length){
@@ -60,12 +60,12 @@ export const useDeckStore = defineStore('deckStore',{
             }
         },
         incrementCard(){
-            if(this.currentCardId != this.getDeckById.cards.length){
+            if(this.currentCardId != this.decks[this.currentDeckId].cards.length){
                 this.currentCardId++;
             }
         },
         decrementCard(){
-            if(this.currentCardID >0){
+            if(this.currentCardId > 0){
                 this.currentCardId--;
             }
         }
